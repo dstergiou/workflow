@@ -23,7 +23,7 @@ digraph {
         style="rounded,filled", 
         color=red, 
         fontcolor=white,
-        label="Cancel change"];
+        label="11. Cancel change"];
     registration[
         shape=box, 
         style=filled,
