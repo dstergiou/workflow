@@ -65,12 +65,12 @@ digraph {
         shape=diamond, 
         style=filled,
         color=yellow,
-        label="2. Pre-approved?"];
+        label="2. Standard change?"];
     if_cmapproved[
         shape=diamond,
         style=filled,
         color=yellow, 
-        label="3. CM Approval?"];
+        label="3. CM Review?"];
     if_cabapproved[
         shape=diamond,
         style=filled,
@@ -93,10 +93,10 @@ digraph {
         color=red
         decorate=true];
     if_cmapproved -> planning[
-        label=Yes,
+        label=Pass,
         decorate=true];
     if_cmapproved -> registration[
-        label=No, 
+        label=Fail, 
         color=red, 
         decorate=true];
     planning -> if_cabapproved
