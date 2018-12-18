@@ -65,22 +65,22 @@ digraph {
         shape=diamond, 
         style=filled,
         color=yellow,
-        label="2. Standard change?"];
+        label="2. Standard\n change?"];
     if_cmapproved[
         shape=diamond,
         style=filled,
         color=yellow, 
-        label="3. CM Review?"];
+        label="3. CM\n Review?"];
     if_cabapproved[
         shape=diamond,
         style=filled,
         color=yellow, 
-        label="5. CAB Approval?"];
+        label="5. CAB\n Approval?"];
     if_changesuccess[
         shape=diamond,
         style=filled,
         color=yellow, 
-        label="7. Success?"];
+        label="7. Successful\nchange?"];
 
     internal_change -> registration;
     external_change -> registration
