@@ -21,7 +21,6 @@ digraph {
         fontcolor=white,
         label="Notify DBRT"];
 
-    
     incident_management[
         shape=box, 
         style=filled,
@@ -131,8 +130,4 @@ digraph {
     dbrt_initial_to_dpa -> dbrt_cooperate_internally
     dbrt_cooperate_internally -> dbrt_to_dpa
     dbrt_to_dpa ->close
-
-
-
-
 }
