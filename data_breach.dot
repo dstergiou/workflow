@@ -1,0 +1,138 @@
+digraph {
+    node[fontname="Verdana", style=rounded]
+    incident_start[
+        shape=box, 
+        style="rounded,filled", 
+        color=green, 
+        fontcolor=black,
+        label="Incident start"];
+
+    close[
+        shape=box, 
+        style="rounded,filled", 
+        color=green, 
+        fontcolor=black,
+        label="Case closed"];
+
+    notify_dbrt[
+        shape=box, 
+        style="filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Notify DBRT"];
+
+    
+    incident_management[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="Follow incident management process"];
+
+    initiate_process[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="Inititate breach notification process"];
+
+    report_to_controller[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="Report to Controller"];
+
+    cooperate_with_controller[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="Cooperate with Controller"];
+
+    dbrt_to_dpa[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="DBRT - Full notification to DPA"];
+
+    dbrt_initial_to_dpa[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="DBRT - Initialnotification to DPA"];
+
+    dbrt_cooperate_internally[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="DBRT - Cooperate with the organization"];
+
+    if_personal_data_breach[
+        shape=diamond,
+        style=filled,
+        color=yellow, 
+        label="Personal Data\nBreach?"];
+
+    if_role[
+        shape=diamond,
+        style=filled,
+        color=yellow, 
+        label="Is the organization \nthe... ?"];
+
+    if_full_possible[
+        shape=diamond,
+        style=filled,
+        color=yellow, 
+        label="Full notification\nfeasible?"];
+
+
+
+    incident_start -> if_personal_data_breach;
+    
+    if_personal_data_breach -> initiate_process[
+        label=Yes,
+        decorate=true];
+    
+    if_personal_data_breach -> incident_management[
+        label=No,
+        decorate=true];
+    
+    incident_management -> close;
+    initiate_process -> notify_dbrt;
+    notify_dbrt -> if_role;
+    
+    if_role -> if_full_possible[
+        label=Controller,
+        decorate=true,
+    ]
+    
+    if_role -> report_to_controller[
+        label=Processor,
+        decorate=true,
+    ]
+
+    report_to_controller -> cooperate_with_controller;
+    cooperate_with_controller -> close;
+
+    if_full_possible -> dbrt_to_dpa[
+        label=Yes,
+        decorate=true
+    ]
+
+    if_full_possible -> dbrt_initial_to_dpa[
+        label=No,
+        decorate=true
+    ]
+    
+    dbrt_initial_to_dpa -> dbrt_cooperate_internally
+    dbrt_cooperate_internally -> dbrt_to_dpa
+    dbrt_to_dpa ->close
+
+
+
+
+}
