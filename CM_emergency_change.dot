@@ -1,0 +1,134 @@
+digraph {
+    fontname="Verdana";
+    label = "Emergency change - v 1.0" 
+    node[fontname="Verdana", style=rounded]
+    rankdir = TB;
+
+    subgraph cluster_0 {
+        label="Change Requester";
+        start[
+            shape=box, 
+            style="rounded,filled", 
+            color=green, 
+            fontcolor=black,
+            label="Start"];
+        
+        no_incident[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Follow normal\nchange process"];
+
+        if_incident[
+            shape=diamond,
+            style=filled,
+            color=yellow, 
+            label="Resolving an\nincident?"];
+    }
+
+    subgraph cluster_1 {
+        label="Change Implementer";
+        build_and_implement[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Build and implement change"];
+
+        change_working[
+            shape=diamond,
+            style=filled,
+            color=yellow, 
+            label="Successful\nchange?"];
+
+        close_record[
+            shape=box, 
+            style="rounded,filled", 
+            color=green, 
+            fontcolor=black,
+            label="Close RFC"];
+
+        backout_change[
+            shape=diamond,
+            style=filled,
+            color=yellow, 
+            label="Rollback\nchange?"];
+        
+        execute_backout[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Perform rollback"];
+
+        implementation_review[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Implementation review"];
+
+        change_failure[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Change failure"];
+    }
+
+    subgraph cluster_2 {
+        label="Change Manager";
+        review_at_cab[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Review at CAB"];
+
+        close_record2[
+            shape=box, 
+            style="rounded,filled", 
+            color=green, 
+            fontcolor=black,
+            label="Close RFC"];
+    
+        // space1[label="C", style=invis];
+        // space2[label="C", style=invis];
+        // space3[label="C", style=invis];
+        // space1 -> space2 -> space3 -> review_at_cab [style=invis]
+    
+    }
+
+    start -> if_incident;
+    if_incident -> no_incident[
+        label=No,
+    ]
+    if_incident -> build_and_implement[
+        label=Yes,
+        constraint=false,
+    ]
+    build_and_implement -> change_working
+    change_working -> close_record[
+        label=Yes,
+    ]
+    change_working -> backout_change[
+        label=No,
+    ]
+    backout_change -> execute_backout[
+        label=Yes,
+    ]
+    backout_change -> change_failure [
+        label=No
+    ]
+
+    execute_backout -> implementation_review
+    change_failure -> implementation_review
+
+    implementation_review -> review_at_cab[
+        constraint=false
+    ]
+    review_at_cab -> close_record2
+    
+
+}
