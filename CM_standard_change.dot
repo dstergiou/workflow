@@ -1,0 +1,105 @@
+digraph {
+    fontname="Verdana";
+    label = "Standard change - v 1.0" 
+    node[fontname="Verdana", style=rounded]
+    rankdir = TB;
+
+    subgraph cluster_0 {
+        label="Change Requester";
+        start[
+            shape=box, 
+            style="rounded,filled", 
+            color=green, 
+            fontcolor=black,
+            label="Start"];
+        select_change[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Select change from template"];
+    }
+
+    subgraph cluster_1 {
+        label="Change Implementer";
+        build_and_implement[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Build and implement change"];
+
+        change_working[
+            shape=diamond,
+            style=filled,
+            color=yellow, 
+            label="Successful\nchange?"];
+
+        close_record[
+            shape=box, 
+            style="rounded,filled", 
+            color=green, 
+            fontcolor=black,
+            label="Close RFC"];
+
+        backout_change[
+            shape=diamond,
+            style=filled,
+            color=yellow, 
+            label="Rollback\nchange?"];
+        
+        execute_backout[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Perform rollback"];
+
+        implementation_review[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Implementation review"];
+    }
+
+    subgraph cluster_2 {
+        label="Change Manager";
+        review_at_cab[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Review at CAB"];
+
+        close_record2[
+            shape=box, 
+            style="rounded,filled", 
+            color=green, 
+            fontcolor=black,
+            label="Close RFC"];
+    }
+
+    start->select_change
+    select_change -> build_and_implement[constraint=false]
+    build_and_implement -> change_working
+
+    change_working -> close_record[
+        label=Yes
+    ]
+    change_working -> backout_change[
+        label=No
+    ]
+
+    backout_change -> execute_backout [
+        label=Yes
+    ]
+    backout_change -> implementation_review[
+        label=No
+    ]
+    execute_backout -> implementation_review
+    implementation_review -> review_at_cab[constraint=false]
+    review_at_cab -> close_record2
+
+
+}
