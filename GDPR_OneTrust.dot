@@ -1,0 +1,60 @@
+digraph {
+    fontname="Verdana";
+    label = "OneTrust Workflow" 
+    node[fontname="Verdana", style=rounded]
+    rankdir = LR;
+
+    subgraph cluster_1 {
+        label = "Process Owner";
+        start[
+        shape=box, 
+        style="rounded,filled", 
+        color=darkgreen, 
+        fontcolor=white,
+        label="Start"];
+
+        define_process[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="Describe process"];
+
+     define_assets[
+        shape=box, 
+        style=filled,
+        color=blue,
+        fontcolor=white,
+        label="Describe assets\nDefine asset owner"];
+
+    endpo[
+        shape=box, 
+        style="rounded,filled", 
+        color=darkgreen, 
+        fontcolor=white,
+        label="Process Owner End"];
+    }
+    
+    subgraph cluster_2 {
+        label = "Asset Owner"
+        define_asset[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Describe asset"];
+
+        endao[
+            shape=box, 
+            style="rounded,filled", 
+            color=darkgreen, 
+            fontcolor=white,
+            label="Asset Owner End"];
+    }
+
+    start -> define_process;
+    define_process -> define_assets;
+    define_assets -> endpo;
+    define_assets -> define_asset;
+    define_asset -> endao
+}
