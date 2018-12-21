@@ -1,5 +1,5 @@
 digraph {
-    node[fontname="Verdana", style=rounded]
+    node[fontname="Verdana", style=filled]
     internal_change[
         shape=box, 
         style="rounded,filled", 
@@ -26,59 +26,49 @@ digraph {
         label="11. Cancel change"];
     registration[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="1. Registration and Classification"];
     deployment[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="6.Deployment"];
     planning[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="4. Planning and Risk Assessment"];
     rollback[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="10. Rollback"];
     reporting[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="8. Reporting"];
     close[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="9. Close Change"];
 
     if_preapproved[
         shape=diamond, 
-        style=filled,
         color=yellow,
         label="2. Standard\n change?"];
     if_cmapproved[
         shape=diamond,
-        style=filled,
         color=yellow, 
         label="3. CM\n Review?"];
     if_cabapproved[
         shape=diamond,
-        style=filled,
         color=yellow, 
         label="5. CAB\n Approval?"];
     if_changesuccess[
         shape=diamond,
-        style=filled,
         color=yellow, 
         label="7. Successful\nchange?"];
 
@@ -120,6 +110,5 @@ digraph {
     close -> end_finish;
     end_cancel -> registration [
         color=red,
-        style=dotted,
-    ];
+        style=dotted];
 }
