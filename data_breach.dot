@@ -1,5 +1,5 @@
 digraph {
-    node[fontname="Verdana", style=rounded]
+    node[fontname="Verdana", style=filled]
     incident_start[
         shape=box, 
         style="rounded,filled", 
@@ -16,79 +16,66 @@ digraph {
 
     notify_dbrt[
         shape=box, 
-        style="filled", 
         color=blue, 
         fontcolor=white,
         label="Notify DBRT"];
 
     incident_management[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="Follow incident management process"];
 
     initiate_process[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="Inititate breach notification process"];
 
     report_to_controller[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="Report to Controller"];
 
     cooperate_with_controller[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="Cooperate with Controller"];
 
     dbrt_to_dpa[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="DBRT - Full notification to DPA"];
 
     dbrt_initial_to_dpa[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="DBRT - Initialnotification to DPA"];
 
     dbrt_cooperate_internally[
         shape=box, 
-        style=filled,
         color=blue,
         fontcolor=white,
         label="DBRT - Cooperate with the organization"];
 
     if_personal_data_breach[
         shape=diamond,
-        style=filled,
         color=yellow, 
         label="Personal Data\nBreach?"];
 
     if_role[
         shape=diamond,
-        style=filled,
         color=yellow, 
         label="Is the organization \nthe... ?"];
 
     if_full_possible[
         shape=diamond,
-        style=filled,
         color=yellow, 
         label="Full notification\nfeasible?"];
-
-
 
     incident_start -> if_personal_data_breach;
     
