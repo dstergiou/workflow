@@ -1,0 +1,175 @@
+digraph {
+    fontname="Verdana";
+    label = "System Integration" 
+    node[fontname="Verdana", style=rounded]
+    rankdir = LR
+
+    newemployee [
+            shape=box, 
+            style="rounded,filled", 
+            color=darkgreen, 
+            fontcolor=white,
+            label="New Employee"];
+        
+        employee [
+            shape=box, 
+            style="rounded,filled", 
+            color=darkgreen, 
+            fontcolor=white,
+            label="Existing Employee"];
+
+        contractor [
+            shape=box, 
+            style="rounded,filled", 
+            color=darkgreen, 
+            fontcolor=white,
+            label="Contractor"];
+
+        thirdparty [
+            shape=box, 
+            style="rounded,filled", 
+            color=darkgreen, 
+            fontcolor=white,
+            label="3rd party"];
+
+        catalystone[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Catalyst One"];
+
+        payroll[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Payroll"];
+
+        timemanagement[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Time management"];
+
+        expenses[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Expenses"];
+        
+        okta[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="IDM (Okta)"];
+
+        freeipa[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="IDM (FreeIPA)"];
+
+        physical[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Fob key"];
+
+        benefits[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Benefits"];
+
+        pension[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="Pension"];
+
+        erp[
+            shape=box, 
+            style=filled,
+            color=blue,
+            fontcolor=white,
+            label="NetSuite"];
+
+        need_payroll[
+            shape=diamond,
+            style = filled,
+            color=yellow, 
+            label="On payroll?"];
+        
+        need_expense[
+            shape=diamond,
+            style = filled,
+            color=yellow, 
+            label="Cover expenses?"];
+
+        need_office[
+            shape=diamond,
+            style = filled,
+            color=yellow, 
+            label="Office account?"];
+
+        need_production[
+            shape=diamond,
+            style = filled,
+            color=yellow, 
+            label="Production account?"];
+
+        need_physical[
+            shape=diamond,
+            style = filled,
+            color=yellow, 
+            label="Physical access"];
+
+        need_benefits[
+            shape=diamond,
+            style = filled,
+            color=yellow, 
+            label="Benefits?"];
+
+    newemployee -> catalystone [ label = "HR\nManual entry"]
+    contractor -> catalystone [ label = "Hiring manager\nManual entry" ]
+    thirdparty -> catalystone [ label = "Hiring manager\nManual entry" ]
+    employee -> catalystone [ label = "HR\nManual entry"]
+    
+    erp -> catalystone [ label = "Cost center" ]
+    
+    catalystone -> need_payroll
+    catalystone -> need_expense
+    catalystone -> need_office
+    catalystone -> need_production
+    catalystone -> need_physical
+    catalystone -> need_benefits
+    
+    need_payroll -> payroll [ label = "On payroll" ]
+    need_payroll -> timemanagement [ label = "Time management" ]
+    need_expense -> expenses [ label = "Expense reporting"]
+    need_office -> okta [ label = "Create account\n on IMD"]
+    need_production -> freeipa [ label = "Create account\n on FreeIPA"]
+    need_physical -> physical [ label = "Create account on\n fob key management"]
+    need_benefits -> benefits [ label = "Account on benefits\nprovider" ]
+    need_benefits -> pension [ label = "Account on pension\provider" ]
+
+
+    // payroll -> catalystone [ label = "Salary info", color = "red" ]
+    // expenses -> catalystone [ label = "Expense info", color = "red"  ]
+    expenses -> payroll [ label = "Expenses info" ]
+    timemanagement -> catalystone [ label = "Absense / Vacation info", color = "red" ]
+    timemanagement -> payroll [ label = "Time info" ]
+    benefits -> catalystone [ label = "Benefits info", color = "red" ]
+    pension -> catalystone [ label = "Pension info", color = "red"  ]
+
+
+
+}
