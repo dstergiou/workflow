@@ -25,7 +25,6 @@ digraph {
             fontcolor=white,
             label="Contractor"];
 
-
         catalystone[
             shape=box, 
             style=filled,
@@ -82,13 +81,6 @@ digraph {
             fontcolor=white,
             label="Pension"];
 
-        erp[
-            shape=box, 
-            style=filled,
-            color=blue,
-            fontcolor=white,
-            label="NetSuite"];
-
         need_payroll[
             shape=diamond,
             style = filled,
@@ -116,9 +108,7 @@ digraph {
     newemployee -> catalystone [ label = "HR\nManual entry"]
     contractor -> catalystone [ label = "Hiring manager\nManual entry" ]
     employee -> catalystone [ label = "HR\nManual entry"]
-    
-    erp -> catalystone [ label = "Cost center" ]
-    
+        
     catalystone -> need_payroll
     catalystone -> need_office
     catalystone -> need_production
