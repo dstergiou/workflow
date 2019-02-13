@@ -63,12 +63,33 @@ digraph {
         fontcolor=white,
         label="Infrastructure as code";
     ]
+    access_management[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Access Management";
+    ]
+    network_segregation[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Software Defined Networks (SDN)";
+    ]
     unit_testing[
         shape=box, 
         style="rounded,filled", 
         color=blue, 
         fontcolor=white,
         label="Unit Testing";
+    ]
+    security_testing[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Security Testing";
     ]
     commit[
         shape=box, 
@@ -90,6 +111,13 @@ digraph {
         color=blue, 
         fontcolor=white,
         label="Build";
+    ]
+    dependency_check[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Dependency Check";
     ]
     package[
         shape=box, 
@@ -176,10 +204,14 @@ digraph {
     design -> code
     sast -> code
     infrastructure_as_code -> code
+    access_management -> infrastructure_as_code
+    network_segregation -> infrastructure_as_code
     code -> unit_testing
+    security_testing -> unit_testing
     unit_testing -> commit
     repository_check -> commit
     commit -> build
+    dependency_check -> build
     build -> package
     package -> staging_registry
     image_scan -> staging_registry
@@ -187,6 +219,7 @@ digraph {
     automated_tests -> staging
     dast -> staging
     staging -> production_registry
+    image_scan -> production_registry
     production_registry -> production
     vulnerability_scanning -> production
     rasp -> production
