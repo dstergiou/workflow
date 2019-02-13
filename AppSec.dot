@@ -1,0 +1,194 @@
+digraph {
+    fontname = "Calibri";
+    product_owner[
+        shape=box, 
+        style="rounded,filled", 
+        color=darkgreen, 
+        fontcolor=white,
+        label="Product owner"];
+        
+    feature[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Feature";
+    ]
+    epic[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Epic";
+    ]
+    security_requirements[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Security Requirements";
+    ]
+    design[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Design & Architecture";
+    ]
+    threat_model[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Threat Model";
+    ]
+    code[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Coding";
+    ]
+    sast[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Static application security testing (SAST)";
+    ]
+    infrastructure_as_code[
+        shape=box, 
+        style="rounded,filled", 
+        color=purple, 
+        fontcolor=white,
+        label="Infrastructure as code";
+    ]
+    unit_testing[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Unit Testing";
+    ]
+    commit[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Commit to Repository";
+    ]
+    repository_check[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Repository Check";
+    ]
+    build[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Build";
+    ]
+    package[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Package";
+    ]
+    staging_registry[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Staging registry";
+    ]
+    image_scan[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Image scan";
+    ]
+    staging[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Staging";
+    ]
+    automated_tests[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Automated testing";
+    ]
+    dast[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Dynamic application security testing (DAST)";
+    ]
+    production_registry[
+        shape=box, 
+        style="rounded,filled", 
+        color=blue, 
+        fontcolor=white,
+        label="Production Registry";
+    ]
+    production[
+        shape=box, 
+        style="rounded,filled", 
+        color=darkgreen, 
+        fontcolor=white,
+        label="Production";
+    ]
+    vulnerability_scanning[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Vulnerability Scanning";
+    ]
+    rasp[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Runtime application self-protection (RASP)";
+    ]
+    logging[
+        shape=box, 
+        style="rounded,filled", 
+        color=orange, 
+        fontcolor=white,
+        label="Logging";
+    ]
+    product_owner -> feature
+    feature -> epic
+    security_requirements -> epic
+    epic -> design
+    threat_model -> design
+    design -> code
+    sast -> code
+    infrastructure_as_code -> code
+    code -> unit_testing
+    unit_testing -> commit
+    repository_check -> commit
+    commit -> build
+    build -> package
+    package -> staging_registry
+    image_scan -> staging_registry
+    staging_registry -> staging
+    automated_tests -> staging
+    dast -> staging
+    staging -> production_registry
+    production_registry -> production
+    vulnerability_scanning -> production
+    rasp -> production
+    logging -> production
+}
