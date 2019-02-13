@@ -19,7 +19,7 @@ digraph {
         style="rounded,filled", 
         color=blue, 
         fontcolor=white,
-        label="Epic";
+        label="Epic(s)";
     ]
     security_requirements[
         shape=box, 
@@ -126,12 +126,12 @@ digraph {
         fontcolor=white,
         label="Package";
     ]
-    staging_registry[
+    registry[
         shape=box, 
         style="rounded,filled", 
         color=blue, 
         fontcolor=white,
-        label="Staging registry";
+        label="Registry";
     ]
     image_scan[
         shape=box, 
@@ -160,13 +160,6 @@ digraph {
         color=orange, 
         fontcolor=white,
         label="Dynamic application security testing (DAST)";
-    ]
-    production_registry[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Production Registry";
     ]
     production[
         shape=box, 
@@ -211,16 +204,14 @@ digraph {
     unit_testing -> commit
     repository_check -> commit
     commit -> build
-    dependency_check -> build
+    dependency_check -> commit
     build -> package
-    package -> staging_registry
-    image_scan -> staging_registry
-    staging_registry -> staging
+    package -> registry
+    image_scan -> registry
+    registry -> staging
     automated_tests -> staging
     dast -> staging
-    staging -> production_registry
-    image_scan -> production_registry
-    production_registry -> production
+    registry -> production
     vulnerability_scanning -> production
     rasp -> production
     logging -> production
