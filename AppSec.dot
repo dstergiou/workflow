@@ -47,7 +47,7 @@ digraph {
         style="rounded,filled", 
         color=blue, 
         fontcolor=white,
-        label="Coding";
+        label="Code";
     ]
     sast[
         shape=box, 
@@ -189,30 +189,31 @@ digraph {
         fontcolor=white,
         label="Logging";
     ]
-    product_owner -> feature
-    feature -> epic
-    security_requirements -> epic
-    epic -> design
-    threat_model -> design
-    design -> code
-    sast -> code
-    infrastructure_as_code -> code
-    access_management -> infrastructure_as_code
-    network_segregation -> infrastructure_as_code
-    code -> unit_testing
-    security_testing -> unit_testing
-    unit_testing -> commit
-    repository_check -> commit
-    commit -> build
-    dependency_check -> commit
-    build -> package
-    package -> registry
-    image_scan -> registry
-    registry -> staging
-    automated_tests -> staging
-    dast -> staging
-    registry -> production
-    vulnerability_scanning -> production
-    rasp -> production
-    logging -> production
+    product_owner -> feature [label = "describes a "]
+    feature -> epic [label = "turns into an"]
+    security_requirements -> epic [color="orange"]
+    epic -> design [label = "requires design decisions"]
+    threat_model -> design [color="orange"]
+    design -> code [ label = "becomes" ]
+    sast -> code [color="orange"]
+    infrastructure_as_code -> code [label = "infra provided to the dev"]
+    access_management -> infrastructure_as_code [color="orange"]
+    network_segregation -> infrastructure_as_code [color="orange"]
+    code -> unit_testing [ label = "is verified by" ]
+    security_testing -> unit_testing [ color="orange"]
+    unit_testing -> commit [ label = "and then commited to repo"]
+    repository_check -> commit [ color="orange"]
+    commit -> build [ label = "commit triggers a build"]
+    dependency_check -> commit [ color="orange"]
+    build -> package [ label = "and the build is packaged" ]
+    package -> registry [ label = "image saved in a registry" ]
+    image_scan -> registry [ color="orange"]
+    registry -> staging [ label = "image deployed on staging"]
+    automated_tests -> staging [ color="orange"]
+    dast -> staging [ color="orange"]
+    staging -> production [label = "if tests pass, image tagged as prod"]
+    staging -> code [label = "if tests fail, it goes back to code", color="red" ]
+    vulnerability_scanning -> production [ color="orange"]
+    rasp -> production [ color="orange"]
+    logging -> production [ color="orange"]
 }
