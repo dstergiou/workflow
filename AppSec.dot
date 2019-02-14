@@ -1,219 +1,95 @@
 digraph {
     fontname = "Calibri";
-    product_owner[
-        shape=box, 
-        style="rounded,filled", 
-        color=darkgreen, 
-        fontcolor=white,
-        label="Product owner"];
-        
-    feature[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Feature";
-    ]
-    epic[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Epic(s)";
-    ]
-    security_requirements[
-        shape=Mrecord, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Security Requirements";
-    ]
-    design[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Design & Architecture";
-    ]
-    threat_model[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Threat Model";
-    ]
-    code[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Code";
-    ]
-    sast[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="SAST";
-    ]
-    infrastructure_as_code[
-        shape=box, 
-        style="rounded,filled", 
-        color=purple, 
-        fontcolor=white,
-        label="Infrastructure as code";
-    ]
-    access_management[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="IAM";
-    ]
-    network_segregation[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="SDN";
-    ]
-    unit_testing[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Unit Testing";
-    ]
-    security_testing[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Security Testing";
-    ]
-    commit[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Commit to Repository";
-    ]
-    repository_check[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Repository Scan";
-    ]
-    build[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Build";
-    ]
-    dependency_check[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Dependency Scan";
-    ]
-    package[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Package";
-    ]
-    registry[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Registry";
-    ]
-    image_scan[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Image scan";
-    ]
-    staging[
-        shape=box, 
-        style="rounded,filled", 
-        color=blue, 
-        fontcolor=white,
-        label="Staging";
-    ]
-    automated_tests[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Automated testing";
-    ]
-    dast[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="DAST";
-    ]
-    production[
-        shape=box, 
-        style="rounded,filled", 
-        color=darkgreen, 
-        fontcolor=white,
-        label="Production";
-    ]
-    vulnerability_scanning[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="VA";
-    ]
-    rasp[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="RASP";
-    ]
-    logging[
-        shape=box, 
-        style="rounded,filled", 
-        color=orange, 
-        fontcolor=white,
-        label="Logging";
-    ]
+    node [fontcolor = white, style="rounded, filled", shape="box"]
+    
+    /* People */
+    product_owner[ color=darkgreen, label="Product owner" ]
+    security_engineer[ color=darkgreen, label="Security analyst" ]
+    
+    
+    /* DevOps elements*/
+    infrastructure_as_code[ color=purple, label="Infra as code" ]
+
+    /* Dev elements */
+    feature[ color=blue, label="Feature" ]
+    epic[ color=blue, label="Epic(s)" ]
+    design[ color=blue, label="Design & Architecture" ]
+    code[ color=blue, label="Code" ]
+    unit_testing[ color=blue, label="Unit Testing" ]
+    commit[ color=blue, label="Commit to Repository" ]
+    build[ color=blue, label="Build" ]
+    package[ color=blue, label="Package" ]
+    registry[ color=blue, label="Registry" ]
+    staging[ color=blue, label="Staging" ]
+
+    /* AppSec elements */
+    security_requirements[ color=orange, label="Security Requirements" ]
+    threat_model[ color=orange, label="Threat Model" ]
+    sast[ color=orange, label="SAST" ]
+    access_management[ color=orange, label="IAM" ]
+    network_segregation[ color=orange, label="SDN" ]
+    security_testing[ color=orange, label="Security Testing" ]
+    repository_check[ color=orange, label="Repo Scan" ]
+    dependency_check[ color=orange, label="Dep Scan" ]
+    image_scan[ color=orange, label="Image scan" ]
+    automated_tests[ color=orange, label="Automated testing" ]
+    dast[ color=orange, label="DAST" ]
+    vulnerability_scanning[ color=orange, label="VA" ]
+    rasp[ color=orange, label="RASP" ]
+    logging[ color=orange, label="Logging" ]
+
+    /* Orchestration elements*/
+    orchi [ color="#DE1F85", label="Orchestration" ]
+
+    /* End result */
+    production[ color="#1FDE49", label="Production" ]
+
+    /***************/
+    /* Connections */
+    /***************/
+
+    /* Dev pipeline */
     product_owner -> feature [label = "describes a "]
     feature -> epic [label = "turns into an"]
-    security_requirements -> epic [color="orange", dir=none]
     epic -> design [label = "requires design decisions"]
-    threat_model -> design [color="orange", dir=none]
     design -> code [ label = "becomes" ]
-    sast -> code [color="orange", dir=none]
-    infrastructure_as_code -> code [label = "infra provided to the dev"]
-    access_management -> infrastructure_as_code [color="orange", dir=none]
-    network_segregation -> infrastructure_as_code [color="orange", dir=none]
     code -> unit_testing [ label = "is verified by" ]
-    security_testing -> unit_testing [ color="orange", dir=none]
     unit_testing -> commit [ label = "and then commited to repo"]
-    repository_check -> commit [ color="orange", dir=none]
     commit -> build [ label = "commit triggers a build"]
-    dependency_check -> commit [ color="orange", dir=none]
     build -> package [ label = "and the build is packaged" ]
     package -> registry [ label = "image saved in a registry" ]
-    image_scan -> registry [ color="orange", dir=none ]
     registry -> staging [ label = "image deployed on staging"]
+    staging -> production [label = "if tests pass, image tagged as prod"]
+    staging -> code [label = "if tests fail, back to code", color="red" ]
+
+    /* AppSec pipeline */
+    security_requirements -> epic [color="orange", dir=none]
+    threat_model -> design [color="orange", dir=none]
+    sast -> code [color="orange", dir=none]
+    security_testing -> unit_testing [ color="orange", dir=none]
+    repository_check -> commit [ color="orange", dir=none]
+    dependency_check -> commit [ color="orange", dir=none]
+    image_scan -> registry [ color="orange", dir=none ]
     automated_tests -> staging [ color="orange", dir=none]
     dast -> staging [ color="orange", dir=none]
-    staging -> production [label = "if tests pass, image tagged as prod"]
-    staging -> code [label = "if tests fail, it goes back to code", color="red" ]
     vulnerability_scanning -> production [ color="orange", dir=none]
     rasp -> production [ color="orange", dir=none]
     logging -> production [ color="orange", dir=none]
+
+    /* DevOps pipeline */
+    infrastructure_as_code -> code [label = "infra provided to the dev"]
+    access_management -> infrastructure_as_code [color="orange", dir=none]
+    network_segregation -> infrastructure_as_code [color="orange", dir=none]
+    
+    /* Orchestration */
+    threat_model -> orchi [ color="#DE1F85" ]
+    sast -> orchi [ color="#DE1F85" ]
+    repository_check -> orchi [ color="#DE1F85" ]
+    dependency_check -> orchi [ color="#DE1F85" ]
+    image_scan -> orchi [ color="#DE1F85" ]
+    automated_tests -> orchi [ color="#DE1F85" ]
+    dast -> orchi [ color="#DE1F85" ]
+    vulnerability_scanning -> orchi [ color="#DE1F85" ]
+    rasp -> orchi [ color="#DE1F85" ]
+    security_engineer -> orchi [ color="#DE1F85" ]
 }
