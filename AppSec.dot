@@ -22,7 +22,7 @@ digraph {
         label="Epic(s)";
     ]
     security_requirements[
-        shape=box, 
+        shape=Mrecord, 
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
@@ -191,29 +191,29 @@ digraph {
     ]
     product_owner -> feature [label = "describes a "]
     feature -> epic [label = "turns into an"]
-    security_requirements -> epic [color="orange"]
+    security_requirements -> epic [color="orange", dir=none]
     epic -> design [label = "requires design decisions"]
-    threat_model -> design [color="orange"]
+    threat_model -> design [color="orange", dir=none]
     design -> code [ label = "becomes" ]
-    sast -> code [color="orange"]
+    sast -> code [color="orange", dir=none]
     infrastructure_as_code -> code [label = "infra provided to the dev"]
-    access_management -> infrastructure_as_code [color="orange"]
-    network_segregation -> infrastructure_as_code [color="orange"]
+    access_management -> infrastructure_as_code [color="orange", dir=none]
+    network_segregation -> infrastructure_as_code [color="orange", dir=none]
     code -> unit_testing [ label = "is verified by" ]
-    security_testing -> unit_testing [ color="orange"]
+    security_testing -> unit_testing [ color="orange", dir=none]
     unit_testing -> commit [ label = "and then commited to repo"]
-    repository_check -> commit [ color="orange"]
+    repository_check -> commit [ color="orange", dir=none]
     commit -> build [ label = "commit triggers a build"]
-    dependency_check -> commit [ color="orange"]
+    dependency_check -> commit [ color="orange", dir=none]
     build -> package [ label = "and the build is packaged" ]
     package -> registry [ label = "image saved in a registry" ]
-    image_scan -> registry [ color="orange"]
+    image_scan -> registry [ color="orange", dir=none ]
     registry -> staging [ label = "image deployed on staging"]
-    automated_tests -> staging [ color="orange"]
-    dast -> staging [ color="orange"]
+    automated_tests -> staging [ color="orange", dir=none]
+    dast -> staging [ color="orange", dir=none]
     staging -> production [label = "if tests pass, image tagged as prod"]
     staging -> code [label = "if tests fail, it goes back to code", color="red" ]
-    vulnerability_scanning -> production [ color="orange"]
-    rasp -> production [ color="orange"]
-    logging -> production [ color="orange"]
+    vulnerability_scanning -> production [ color="orange", dir=none]
+    rasp -> production [ color="orange", dir=none]
+    logging -> production [ color="orange", dir=none]
 }
