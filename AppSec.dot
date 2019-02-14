@@ -54,7 +54,7 @@ digraph {
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Static application security testing (SAST)";
+        label="SAST";
     ]
     infrastructure_as_code[
         shape=box, 
@@ -68,14 +68,14 @@ digraph {
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Access Management";
+        label="IAM";
     ]
     network_segregation[
         shape=box, 
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Software Defined Networks (SDN)";
+        label="SDN";
     ]
     unit_testing[
         shape=box, 
@@ -103,7 +103,7 @@ digraph {
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Repository Check";
+        label="Repository Scan";
     ]
     build[
         shape=box, 
@@ -117,7 +117,7 @@ digraph {
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Dependency Check";
+        label="Dependency Scan";
     ]
     package[
         shape=box, 
@@ -159,7 +159,7 @@ digraph {
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Dynamic application security testing (DAST)";
+        label="DAST";
     ]
     production[
         shape=box, 
@@ -173,14 +173,14 @@ digraph {
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Vulnerability Scanning";
+        label="VA";
     ]
     rasp[
         shape=box, 
         style="rounded,filled", 
         color=orange, 
         fontcolor=white,
-        label="Runtime application self-protection (RASP)";
+        label="RASP";
     ]
     logging[
         shape=box, 
