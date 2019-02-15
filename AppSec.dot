@@ -4,8 +4,9 @@ digraph {
     
     /* People */
     product_owner[ color=darkgreen, label="Product owner" ]
-    security_engineer[ color=darkgreen, label="Security analyst" ]
-    
+    security_engineer[ color=darkgreen, label="Security analyst" ]  
+    architect[ color=darkgreen, label="Architect" ]
+    developer[ color=darkgreen, label="Developer" ]
     
     /* DevOps elements*/
     infrastructure_as_code[ color=purple, label="Infra as code" ]
@@ -52,7 +53,9 @@ digraph {
     product_owner -> feature [label = "describes a "]
     feature -> epic [label = "turns into an"]
     epic -> design [label = "requires design decisions"]
+    architect -> design
     design -> code [ label = "becomes" ]
+    developer -> code
     code -> unit_testing [ label = "is verified by" ]
     unit_testing -> commit [ label = "and then commited to repo"]
     commit -> build [ label = "commit triggers a build"]
