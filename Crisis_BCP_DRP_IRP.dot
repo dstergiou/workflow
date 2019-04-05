@@ -1,0 +1,26 @@
+digraph {
+    fontname="Verdana";
+    label = "CMP, BCP, IRP" 
+    node[ fontname="Verdana", style="rounded,filled", shape="box", fontcolor="white",  ]
+
+    event_start [ color="blue", label = "Event start"]
+    event_end [ color="blue", label = "Event end"]
+    irp [ color="darkgreen", label = "Incident Management Process"]
+    irp_decision [ color="black", label="Handled\n by IR?", shape="diamond"]
+    execute_irp [ color="darkgreen", label="Execute IRP"]
+    bcp_decision [ color="black", label="Covered\nin BCP?", shape="diamond"]
+    execute_bcp [ color="darkgreen", label="Execute BCP"]
+    execute_cmp [ color="darkgreen", label="Execute CMP"]
+
+    event_start -> irp
+    irp -> irp_decision
+    irp_decision -> execute_irp [ label="Yes"] 
+    irp_decision -> bcp_decision [ label="No"]
+    bcp_decision -> execute_bcp [ label = "Yes" ]
+    bcp_decision -> execute_cmp[ label = "No" ]
+    execute_irp -> event_end
+    execute_bcp -> event_end
+    execute_cmp -> event_end
+    
+    
+}
